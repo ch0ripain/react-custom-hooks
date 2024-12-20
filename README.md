@@ -2,7 +2,7 @@
 
 A custom hook is simply a normal JS <code>function</code> whose purpose is to wrap all the <code>state/logic</code> which is closely-related and repetitive to use it wherever you want avoiding that boilerplate code and encouraging reusability. 
 
-In this project, i used a <code>custom hook</code> to group up a fetch feature that manages 3 related <code>states</code> and logic.
+In this project, i used a <code>custom hook</code> to group up a fetch feature that manages 3 related <code>states</code> and some <code>logic</code>
 
 ```javascript
   //states

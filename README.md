@@ -113,9 +113,9 @@ To integrate this with the <code>custom hook</code>, a <code>customized fetch fu
    }
 ```
 Now, use the <code>custom hook</code> with the <code>fetch</code> function
-
- <code> const { isFetching, data: availablePlaces, error } = useFetch(fetchSortedPlaces, []); </code>
- 
+```javascript
+ const { isFetching, data: availablePlaces, error } = useFetch(fetchSortedPlaces, []);
+```
 ## Quick Recap 🔄
 
 - Create a reusable <code>custom hook</code> file (<code>useFn.js</code>) to manage some closely-related <code>state/logic</code>.

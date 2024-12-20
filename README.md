@@ -29,8 +29,8 @@ In this project, i used a <code>custom hook</code> to group up a <code>fetch</co
 
 I organized the project by adding a <code>hooks</code> folder and a <code>useFetch.js</code> file. 
 
-- The folder can also be named <code>customhooks</code> or anything descriptive.
-- The <code>file</code> name must start with <code>use</code> to comply and take advantage of <code>React Hooks Rules</code>
+- <code>folder</code> ➡️ can also be named <code>customhooks</code> or anything descriptive.
+- <code>file</code> ➡️ name must start with <code>use</code> to comply and take advantage of <code>React Hooks Rules</code>
 
 ```javascript
 export function useFetch(fetchFn,initialValue){

@@ -120,7 +120,7 @@ Now, use the <code>custom hook</code> with the <code>fetch</code> function
 
 - Create a reusable <code>custom hook</code> file (<code>useFn.js</code>) to manage some closely-related <code>state/logic</code>.
 - Generalize the <code>state/logic</code> and also add <code>parameters</code> for flexibility.
-- Handle other use cases with <code>customized functions</code> (<code>async/Promise</code>).
+- Handle other use cases with <code>custom functions</code> (<code>async/Promise</code>).
 
 Finally, the project is cleaner and the <code>custom hook</code> can be easily reused across <code>components</code> as it is unique to each component's use.
 

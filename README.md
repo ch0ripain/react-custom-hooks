@@ -1,8 +1,8 @@
 <h1 align="center">🧙‍♂️ Custom Hooks 🧙‍♂️</h1>
 
-A custom hook is simply a normal javascript function whose purpose is to wrap all the state logic which is closely-related and repetitive to use it wherever you want avoiding that boilerplate code and encouraging reusability. 
+A custom hook is simply a normal javascript <code>function</code> whose purpose is to wrap all the <code>state logic</code> which is closely-related and repetitive to use it wherever you want avoiding that boilerplate code and encouraging reusability. 
 
-In this project, i used a custom hook to group up a fetch feature that manages 3 related states and some logic.
+In this project, i used a <code>custom hook</code> to group up a fetch feature that manages 3 related <code>states</code> and logic.
 
 ```javascript
   //states
@@ -25,12 +25,12 @@ In this project, i used a custom hook to group up a fetch feature that manages 3
   }, []);
 ```
 
-## Creating the Custom Hook
+## Creating the <code>Custom Hook</code> 🔧
 
-I organized the project by adding a hooks folder and a useFetch.js file. 
+I organized the project by adding a hooks folder and a <code>useFetch.js</code> file. 
 
-- The folder can be named customhooks or anything descriptive.
-- The file name must start with use to comply and take advantage of React Hooks Rules.
+- The folder can also be named <code>customhooks</code> or anything descriptive.
+- The <code>file</code> name must start with use to comply and take advantage of <code>React Hooks Rules</code>
 
 ```javascript
 export function useFetch(fetchFn,initialValue){
@@ -61,14 +61,14 @@ export function useFetch(fetchFn,initialValue){
 }
 ```
 
-- Generalized State and Logic: State names and logic are now more generic.
-- Flexible Parameters: Added fetchFn and initialValue to allow dynamic usage.
-- Effect Dependencies: Ensured fetchFn is listed as a dependency for proper reusability.
-- Reusability: Returns an object containing all values and functions to expose.
+- Generalize <code>state/logic</code>: state names and logic variables are now more generic.
+- Flexible <code>Parameters</code>: added <code>fetchFn</code> and <code>initialValue</code> to allow dynamic usage.
+- Effect Dependencies: ensured <code>fetchFn</code> is listed as a dependency for proper reusability.
+- Reusability: returns an <code>object</code> containing all <code>values</code> and <code>functions</code> to expose.
 
-## Using the Custom Hook
+## Using the <code>Custom Hook</code> 🔄
 
-Now, this custom hook can be used as follows:
+Now, this <code>custom hook</code> can be used as follows:
 
 ```javascript
   import { useFetch } from "./hooks/useFetch.js";
@@ -78,8 +78,8 @@ Now, this custom hook can be used as follows:
   {error && <Error title="An error occurred!" message={error.message} />}
 ```
 
-## Another Use Case: Nested Logic in Fetch
-In AvailablePlaces.jsx, I needed to fetch available places and sort them by user location using the navigator API:
+## Another Use Case: Nested Logic in <code>Fetch</code> 🎩
+In <code>AvailablePlaces.jsx</code>, I needed to <code>fetch</code> available places and sort them by user location using the <code>navigator</code> API:
 
 ```javascript
  useEffect(() => {
@@ -94,7 +94,7 @@ In AvailablePlaces.jsx, I needed to fetch available places and sort them by user
     }
 ```
 
-To integrate this with the custom hook, a custom fetch function is needed:
+To integrate this with the <code>custom hook</code>, a <code>customized fetch function</code> is needed:
 ```javascript
   //create a function with all the nested behavior what is needed
    async function fetchSortedPlaces(){
@@ -112,16 +112,17 @@ To integrate this with the custom hook, a custom fetch function is needed:
    })
    }
 ```
-Now, use the Custom Hook with the Fetch Function:
- const { isFetching, data: availablePlaces, error } = useFetch(fetchSortedPlaces, []);
+Now, use the <code>custom hook</code> with the <code>fetch function</code>
+
+ <code> const { isFetching, data: availablePlaces, error } = useFetch(fetchSortedPlaces, []); </code>
  
 ## Quick Recap 🔄
 
-- Create a reusable custom hook file (useFn.js) to manage some closely-related state/logic.
-- Generalize the state/logic and also add paramethers for flexibility.
-- Handle other use cases with customized functions (async/Promise).
+- Create a reusable <code>custom hook</code> file (<code>useFn.js</code>) to manage some closely-related <code>state/logic</code>.
+- Generalize the <code>state/logic</code> and also add <code>parameters</code> for flexibility.
+- Handle other use cases with <code>customized functions</code> (<code>async/Promise</code>).
 
-Finally, the project is cleaner and the custom hook can be easily reused across components as it is unique to each component's use.
+Finally, the project is cleaner and the <code>custom hook</code> can be easily reused across <code>components</code> as it is unique to each component's use.
 
 
 ---

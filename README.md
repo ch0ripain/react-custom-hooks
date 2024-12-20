@@ -112,7 +112,7 @@ To integrate this with the <code>custom hook</code>, a <code>customized fetch fu
    })
    }
 ```
-Now, use the <code>custom hook</code> with the <code>fetch function</code>
+Now, use the <code>custom hook</code> with the <code>fetch</code> function
 
  <code> const { isFetching, data: availablePlaces, error } = useFetch(fetchSortedPlaces, []); </code>
  

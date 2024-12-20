@@ -94,7 +94,7 @@ In <code>AvailablePlaces.jsx</code>, I needed to <code>fetch</code> available pl
     }
 ```
 
-To integrate this with the <code>custom hook</code>, a <code>customized fetch function</code> is needed:
+To integrate this with the <code>custom hook</code>, a <code>customized fetch function</code> was needed:
 ```javascript
   //create a function with all the nested behavior what is needed
    async function fetchSortedPlaces(){

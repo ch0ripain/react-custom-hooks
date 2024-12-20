@@ -61,10 +61,10 @@ export function useFetch(fetchFn,initialValue){
 }
 ```
 
-- Generalize <code>state/logic</code>: state names and logic variables are now more generic.
-- Flexible <code>Parameters</code>: added <code>fetchFn</code> and <code>initialValue</code> to allow dynamic usage.
-- Effect Dependencies: ensured <code>fetchFn</code> is listed as a dependency for proper reusability.
-- Reusability: returns an <code>object</code> containing all <code>values</code> and <code>functions</code> to expose.
+- Generalize <code>state/logic</code> ➡️ state and logic variables names are now more generic.
+- Flexible <code>Parameters</code> ➡️ added <code>fetchFn</code> and <code>initialValue</code> to allow dynamic usage.
+- Effect Dependencies ➡️ ensured <code>fetchFn</code> is listed as a dependency for proper reusability.
+- Reusability ➡️ returns an <code>object</code> containing all <code>values</code> and <code>functions</code> to expose.
 
 ## Using the <code>Custom Hook</code> 🔄
 

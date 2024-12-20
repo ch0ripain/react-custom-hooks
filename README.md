@@ -1,7 +1,10 @@
 <h1 align="center">🧙‍♂️ Custom Hooks 🧙‍♂️</h1>
 
-A custom hook is just a normal javascript function which purpose is to contain all the state logic which is closely-related or repetitive on a few components to use it wherever you want avoiding that boilerplate code. In this project, i use a custom hook to group up a fetch feature which manage these 3 states.
+A custom hook is simply a normal javascript function whose purpose is to wrap all the state logic which is closely-related and repetitive to use it wherever you want avoiding that boilerplate code and encouraging reusability. 
 
+In this project, i used a custom hook to group up a fetch feature that manages 3 related states and some logic.
+
+```javascript
   //states
   const [userPlaces, setUserPlaces] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
@@ -20,12 +23,16 @@ A custom hook is just a normal javascript function which purpose is to contain a
     }
     fetchPlaces();
   }, []);
+```
 
-So, i created a hooks folder and then added a useFetch.js file
-- hooks folder can also be named customhooks or anyname you think is good
-- 'use' word before Fetch.js must be necessary to leverage and follow all the React Hooks Rules
-Now, all the body function must be modified to encourage the reusability and making it a proper custom hook
+## Creating the Custom Hook
 
+I organized the project by adding a hooks folder and a useFetch.js file. 
+
+- The folder can be named customhooks or anything descriptive.
+- The file name must start with use to comply and take advantage of React Hooks Rules.
+
+```javascript
 export function useFetch(fetchFn,initialValue){
   //modified states
   const [isFetching, setIsFetching] = useState(false);
@@ -52,21 +59,29 @@ export function useFetch(fetchFn,initialValue){
   setData,
   error
 }
+```
 
-- state naming and logic all more general named
-- fetchFn and initialValue added to enhance a more flexible custom hook
-- fetchFn must be a useEffect's dependency since it will change when it is used in other components
-- must return a object or array (or some other expression) which contains all the values or fn i want to expose
+- Generalized State and Logic: State names and logic are now more generic.
+- Flexible Parameters: Added fetchFn and initialValue to allow dynamic usage.
+- Effect Dependencies: Ensured fetchFn is listed as a dependency for proper reusability.
+- Reusability: Returns an object containing all values and functions to expose.
 
-With all that changes now i use that custom hook as is intended
+## Using the Custom Hook
 
+Now, this custom hook can be used as follows:
+
+```javascript
   import { useFetch } from "./hooks/useFetch.js";
   const { isFetching, data: userPlaces, error } = useFetch(fetchUserPlaces, []);
   ...
   <DummyComponent isLoading={isFetching} places={userPlaces} />
   {error && <Error title="An error occurred!" message={error.message} />}
+```
 
-In this project, i have some nested logic in my fetch feature on AvailablePlaces.jsx as you can see below:
+## Another Use Case: Nested Logic in Fetch
+In AvailablePlaces.jsx, I needed to fetch available places and sort them by user location using the navigator API:
+
+```javascript
  useEffect(() => {
           ...
                 navigator.geolocation.getCurrentPosition((position) => {
@@ -77,15 +92,14 @@ In this project, i have some nested logic in my fetch feature on AvailablePlaces
                 );
           ...
     }
+```
 
-Basically i want to fetch all the available places and then sorted them by the user location using that built-in navigator API.
-In the custom hook code there is a const data = await fetchFn(); which means it will wait a Promise that need to be resolved or not
-That means i'll need to wrap all the sorted places in a Promise since that is what im awaiting for in my custom hook in this case
-
-  //create a function with all the nested behavior it is needed
+To integrate this with the custom hook, a custom fetch function is needed:
+```javascript
+  //create a function with all the nested behavior what is needed
    async function fetchSortedPlaces(){
    const places = await fetchAvailablePlaces() // first retrieve all that places
-   //then return the Promise with the resolve or reject (not handleded in this case)
+   //then returns a Promise with the resolve (sortedPlaces) or reject (not handled in this case)
    return new Promise((resolve,reject) => {
    navigator.geolocation.getCurrentPosition((position) => {
                 const sortedPlaces = sortPlacesByDistance(
@@ -93,15 +107,21 @@ That means i'll need to wrap all the sorted places in a Promise since that is wh
                   position.coords.latitude,
                   position.coords.longitude
                 );
-                resolve(sortedPlaces) //pass sorted places as the resolve result
+                resolve(sortedPlaces)
    })
    })
    }
+```
+Now, use the Custom Hook with the Fetch Function:
+ const { isFetching, data: availablePlaces, error } = useFetch(fetchSortedPlaces, []);
+ 
+## Quick Recap 🔄
 
-   Now, this customized function could be passed to the custom hook
+- Create a reusable custom hook file (useFn.js) to manage some closely-related state/logic.
+- Generalize the state/logic and also add paramethers for flexibility.
+- Handle other use cases with customized functions (async/Promise).
 
-   const { isFetching, data: availablePlaces, error } = useFetch(fetchSortedPlaces, []);
-
+Finally, the project is cleaner and the custom hook can be easily reused across components as it is unique to each component's use.
 
 
 ---
